@@ -7,6 +7,8 @@ import {
     Link
 } from 'react-router-dom';
 
+import apiService from '../utils/api.service';
+
 const Main = () => (
     <div>
         <h1>Main page</h1>
@@ -19,21 +21,54 @@ const Work = ({ match }) => (
     </div>
 );
 
-const Works = ({ match }) => (
-    <div>
+class Works extends React.Component {
+  constructor(...props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    apiService.get('/project', {get: {test: 'for', test2: 'bar'}})
+      .then(projects => {
+        console.log('project');
+        console.log(projects);
+      })
+  }
+
+  render() {
+    const {match} = this.props;
+    return (
+      <div>
         <h1>Works</h1>
         <ul>
-            <li>
-                <Link to={`${match.url}/1`}>Первая работа</Link>
-            </li>
-            <li>
-                <Link to={`${match.url}/2`}>Вторая работа</Link>
-            </li>
+          <li>
+            <Link to={`${match.url}/1`}>Первая работа</Link>
+          </li>
+          <li>
+            <Link to={`${match.url}/2`}>Вторая работа</Link>
+          </li>
         </ul>
 
         <Route path={`${match.url}/:workId`} component={Work} />
-    </div>
-);
+      </div>
+    )
+  }
+}
+
+// const Works = ({ match }) => (
+//     <div>
+//         <h1>Works</h1>
+//         <ul>
+//             <li>
+//                 <Link to={`${match.url}/1`}>Первая работа</Link>
+//             </li>
+//             <li>
+//                 <Link to={`${match.url}/2`}>Вторая работа</Link>
+//             </li>
+//         </ul>
+//
+//         <Route path={`${match.url}/:workId`} component={Work} />
+//     </div>
+// );
 
 const App = () => {
     return(

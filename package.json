@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --history-api-fallback --inline --progress --port 1337",
+    "start": "webpack-dev-server --history-api-fallback --inline --progress --port 3000",
     "build": "node_modules/.bin/rimraf static && webpack --config webpack-config/webpack.prod.js --progress --profile --bail"
   },
   "keywords": [],
@@ -31,6 +31,7 @@
     "webpack-merge": "^4.0.0"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "classnames": "^2.2.5",
     "lodash": "^4.17.4",
     "react": "^15.4.2",
@@ -45,8 +46,6 @@
     "type": "git",
     "url": "git+https://github.com/robotcigan/roma-frontend.git"
   },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/robotcigan/roma-frontend/issues"
   },
