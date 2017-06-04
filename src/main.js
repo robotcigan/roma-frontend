@@ -17,8 +17,8 @@ let store = {};
 
 
 ReactDOM.render(
-    <Provider strore={store}>
-        <App />
-    </Provider>,
-    document.getElementById('root')
+  <Provider strore={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
 );
