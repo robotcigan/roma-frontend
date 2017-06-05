@@ -10,7 +10,7 @@ import {
 import apiService from '../utils/api.service';
 
 import Main from '../components/main/main.jsx'
-import Works from '../components/works/works.jsx';
+import Projects from '../components/projects/projects.jsx';
 
 const App = () => {
   return(
@@ -27,7 +27,7 @@ const App = () => {
                 <Link to="/main">main</Link>
               </li>
               <li>
-                <Link to="/works">works</Link>
+                <Link to="/projects">works</Link>
               </li>
             </ul>
           </div>
@@ -36,7 +36,7 @@ const App = () => {
         <hr/>
 
         <Route path="/main" component={Main} />
-        <Route path="/works" component={Works} />
+        <Route path="/projects" component={Projects} />
 
       </div>
     </Router>

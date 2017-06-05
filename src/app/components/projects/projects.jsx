@@ -2,12 +2,25 @@
 
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import apiService from '../../utils/api.service.js';
 
-import Work from './work.jsx';
+import Project from './project.jsx';
 
-class Works extends React.Component {
+class Projects extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      projects: []
+    }
+  }
+
+  getProjects() {
+   return this.state.projects.map(project => {
+     return(
+       <li key={project.id}>{project.title}</li>
+     )
+   })
   }
 
   componentDidMount() {
@@ -15,14 +28,21 @@ class Works extends React.Component {
     .then(projects => {
       console.log('project');
       console.log(projects);
+      this.setState({
+        projects: projects
+      })
     })
   }
 
   render() {
     const {match} = this.props;
+    const projectList = this.getProjects();
     return (
       <div>
-        <h1>Works</h1>
+        <h1>Projects</h1>
+        <ul>
+          {projectList}
+        </ul>
         <ul>
           <li>
             <Link to={`${match.url}/1`}>Первая работа</Link>
@@ -32,10 +52,10 @@ class Works extends React.Component {
           </li>
         </ul>
 
-        <Route path={`${match.url}/:workId`} component={Work} />
+        <Route path={`${match.url}/:projectId`} component={Project} />
       </div>
     )
   }
 }
 
-export default Works;
+export default Projects;
