@@ -7,10 +7,9 @@ import {
   Link
 } from 'react-router-dom';
 
-import apiService from '../utils/api.service';
-
 import Main from '../components/main/main.jsx'
 import Projects from '../components/projects/projects.jsx';
+import Admin from '../admin/components/admin';
 
 const App = () => {
   return(
@@ -41,6 +40,6 @@ const App = () => {
       </div>
     </Router>
   )
-}
+};
 
 export default App;

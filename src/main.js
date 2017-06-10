@@ -6,7 +6,7 @@ import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 
 // import reducers from './app/reducers';
-import App from './app/containers/app';
+import Root from './app/containers/root';
 
 // let store = createStore(
 //     combineReducers({
@@ -18,7 +18,7 @@ let store = {};
 
 ReactDOM.render(
   <Provider strore={store}>
-    <App />
+    <Root />
   </Provider>,
   document.getElementById('root')
 );
