@@ -9,7 +9,6 @@ import {
 
 import Main from '../components/main/main.jsx'
 import Projects from '../components/projects/projects.jsx';
-import Admin from '../admin/components/admin';
 
 const App = () => {
   return(
