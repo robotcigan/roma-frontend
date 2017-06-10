@@ -3,7 +3,7 @@
 import axios from 'axios';
 import appConfig from '../../config';
 
-module.exports = {
+export default {
   instance: axios.create({
     baseURL: `${appConfig.api}/${appConfig.version}`
   }),
