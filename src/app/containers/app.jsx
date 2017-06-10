@@ -4,7 +4,8 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Switch
 } from 'react-router-dom';
 
 import Main from '../components/main/main.jsx'
@@ -12,7 +13,6 @@ import Projects from '../components/projects/projects.jsx';
 
 const App = () => {
   return(
-    <Router>
       <div>
 
         <nav className="navbar navbar-default">
@@ -22,10 +22,10 @@ const App = () => {
           <div className="collapse navbar-collapse">
             <ul className="nav navbar-nav">
               <li>
-                <Link to="/main">main</Link>
+                <Link to="/app/main">main</Link>
               </li>
               <li>
-                <Link to="/projects">works</Link>
+                <Link to="/app/projects">works</Link>
               </li>
             </ul>
           </div>
@@ -33,11 +33,12 @@ const App = () => {
 
         <hr/>
 
-        <Route path="/main" component={Main} />
-        <Route path="/projects" component={Projects} />
+        <Switch>
+          <Route path="/app/main" component={Main} />
+          <Route path="/app/projects" component={Projects} />
+        </Switch>
 
       </div>
-    </Router>
   )
 };
 

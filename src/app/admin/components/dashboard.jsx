@@ -2,18 +2,18 @@
 
 import React, {Component} from 'react';
 
-class Login extends Component {
+class Dashboard extends Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
 
   render() {
     return (
       <div>
-        <h1>Login</h1>
+        <h1>Dashboard</h1>
       </div>
     )
   }
 }
 
-export default Login;
+export default Dashboard;
