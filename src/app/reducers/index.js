@@ -1,7 +1,9 @@
 'use strict';
 
 import userReducer from './user';
+import loadingReducer from './loading';
 
 export default {
-  user: userReducer
+  user: userReducer,
+  loading: loadingReducer
 }

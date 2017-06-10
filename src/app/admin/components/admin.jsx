@@ -14,20 +14,30 @@ class Admin extends Component {
     super(props);
   }
 
-  render() {
+  getRoutes() {
+    const {isLogin} = this.props.user;
     return (
       <Switch>
-        <PrivateRoute exact path="/admin/" isLogin={this.props.user.isLogin} component={Dashboard} />
+        <PrivateRoute exact path="/admin/" isLogin={isLogin} component={Dashboard} />
         <Route path="/admin/login" component={Login} />
         <Redirect to="/admin/login" />
       </Switch>
+    )
+  }
+
+  render() {
+    return (
+      this.props.loading.login ?
+        (<h1>PRELOADER</h1>) :
+        this.getRoutes()
     )
   }
 }
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    user: state.user,
+    loading: state.loading
   }
 };
 
