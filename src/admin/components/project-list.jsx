@@ -7,6 +7,8 @@ import {Table} from 'reactstrap';
 
 import * as projectActions from '../actions/project';
 
+import ProjectItem from '../containers/project-item';
+
 class ProjectList extends Component {
   constructor(props) {
     super(props);
@@ -18,11 +20,7 @@ class ProjectList extends Component {
 
   getProjectRowView() {
     return this.props.project.body.map((item, key) => (
-      <tr key={key}>
-        <td>{item.handle}</td>
-        <td>{item.title}</td>
-        <td>{item.description}</td>
-      </tr>
+      <ProjectItem key={key} project={item} />
     ));
   }
 
@@ -49,13 +47,13 @@ class ProjectList extends Component {
 const mapStateToProps = state => {
   return {
     project: state.project
-  }
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     actions: bindActionCreators(projectActions, dispatch)
-  }
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectList);

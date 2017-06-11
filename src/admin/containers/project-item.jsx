@@ -2,9 +2,13 @@
 
 import React from 'react';
 
-const ProjectItem = () => {
+const ProjectItem = ({project}) => {
   return (
-    <div></div>
+    <tr>
+      <td>{project.handle}</td>
+      <td>{project.title}</td>
+      <td>{project.description}</td>
+    </tr>
   )
 };
 
