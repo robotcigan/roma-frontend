@@ -6,6 +6,8 @@ import {Route, Redirect, Link, Switch} from 'react-router-dom';
 
 import {setLogin} from '../actions/user';
 
+import RNavBar from '../containers/nav-bar';
+
 import PrivateRoute from '../../common/component/private-route';
 import Dashboard from '../components/dashboard';
 import Login from '../components/login';
@@ -20,11 +22,14 @@ class App extends React.Component {
   render() {
     const {user} = this.props;
     return (
-      <Switch>
-        <PrivateRoute isLogin={user.isLogin} exact path="/admin/" component={Dashboard} />
-        <Route path="/admin/login" component={Login} />
-        <Redirect to="/admin/login" />
-      </Switch>
+      <div>
+        <RNavBar/>
+        <Switch>
+          <PrivateRoute isLogin={user.isLogin} exact path="/admin/" component={Dashboard} />
+          <Route path="/admin/login" component={Login} />
+          <Redirect to="/admin/login" />
+        </Switch>
+      </div>
     )
   }
 }
