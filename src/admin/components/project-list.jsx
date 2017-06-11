@@ -3,9 +3,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import ProjectList from './project-list';
-
-class Dashboard extends Component {
+class ProjectList extends Component {
   constructor(props) {
     super(props);
   }
@@ -13,8 +11,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <h1>Dashboard</h1>
-        <ProjectList/>
+
       </div>
     )
   }
@@ -22,13 +19,14 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+
   }
 };
 
 const mapDispatchToProps = dispatch => {
-  return {}
+  return {
+
+  }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
-
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectList);

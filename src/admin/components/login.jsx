@@ -24,6 +24,12 @@ class Login extends Component {
     }
   }
 
+  componentWillMount() {
+    if (this.props.isLogin) {
+      this.props.history.push('/admin/');
+    }
+  }
+
   onSend(e) {
     e.preventDefault();
     // console.log('on submit', this.login);
