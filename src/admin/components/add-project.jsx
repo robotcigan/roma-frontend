@@ -1,11 +1,13 @@
 'use strict';
 
-import React, { Component } from 'react';
-// import apiService from '../../utils/api.service.js';
+import React, {Component} from 'react';
 
-class Dashboard extends Component {
+import apiService from '../../common/services/api.service.js';
+
+class AddProject extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       projectName: '',
       projectHandle: '',
@@ -19,33 +21,34 @@ class Dashboard extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-    this.setState({
-      [name]: value
-    });
-  }
-
-  handleSubmit() {
-    apiService.post('/project', {post: {
-      'title': this.state.projectName,
-      'handle': this.state.projectHandle,
-      'description': this.state.projectDescription,
-      'active': this.state.projectActive,
-      'order': this.state.projectOrder,
-      'status': this.state.projectStatus
-    }})
-      .then(() => {
-        console.log('project saved');
+    handleChange(event) {
+      const target = event.target;
+      const value = target.type === 'checkbox' ? target.checked : target.value;
+      const name = target.name;
+      this.setState({
+        [name]: value
       });
-  }
+   }
+
+    handleSubmit() {
+      apiService.post('/project', {post: {
+        'title': this.state.projectName,
+        'handle': this.state.projectHandle,
+        'description': this.state.projectDescription,
+        'active': this.state.projectActive,
+        'order': this.state.projectOrder,
+        'status': this.state.projectStatus
+      }})
+       .then(() => {
+         console.log('project saved');
+       });
+    }
+  
 
   render() {
-    return (
+    return(
       <div className="container">
-        <h1>Dashboard</h1>
+        <h1>Add project</h1>
         <form>
           <div className="form-group row">
             <label className="col-3 col-form-label">Название проекта</label>
@@ -74,12 +77,12 @@ class Dashboard extends Component {
           <div className="form-group row">
             <label className="col-3 col-form-label">Описание</label>
             <div className="col-9">
-              <textarea
-                value={this.state.projectDescription}
-                onChange={this.handleChange}
-                name="projectDescription"
-                className="form-control">
-              </textarea>
+            <textarea
+              value={this.state.projectDescription}
+              onChange={this.handleChange}
+              name="projectDescription"
+              className="form-control">
+            </textarea>
             </div>
           </div>
           <div className="form-group row">
@@ -128,4 +131,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default AddProject;

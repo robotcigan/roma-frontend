@@ -16,6 +16,9 @@ const RNavBar = () => {
             <NavItem>
               <Link className="nav-link" to="/admin/test" >Test</Link>
             </NavItem>
+            <NavItem>
+              <Link className="nav-link" to="/admin/add-project">Add project</Link>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>
