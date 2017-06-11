@@ -2,8 +2,10 @@
 
 import userReducer from './user';
 import loadingReducer from './loading';
+import projectReducer from './project';
 
 export default {
   user: userReducer,
-  loading: loadingReducer
+  loading: loadingReducer,
+  project: projectReducer
 }
