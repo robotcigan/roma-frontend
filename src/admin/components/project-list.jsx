@@ -3,7 +3,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {Table} from 'reactstrap';
+import {Card} from 'reactstrap';
 
 import * as projectActions from '../actions/project';
 
@@ -18,27 +18,18 @@ class ProjectList extends Component {
     this.props.actions.getProjectList();
   }
 
-  getProjectRowView() {
+  getProjectCardView() {
     return this.props.project.body.map((item, key) => (
       <ProjectItem key={key} project={item} />
-    ));
+    ))
   }
 
   render() {
     return (
-      <div>
-        <Table>
-          <thead>
-            <tr>
-              <th>handle</th>
-              <th>title</th>
-              <th>description</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.getProjectRowView()}
-          </tbody>
-        </Table>
+      <div className="container">
+        <div className="row">
+          {this.getProjectCardView()}
+        </div>
       </div>
     )
   }

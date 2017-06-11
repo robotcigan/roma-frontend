@@ -7,6 +7,7 @@ import {Route, Redirect, Link, Switch} from 'react-router-dom';
 import {setLogin} from '../actions/user';
 
 import RNavBar from '../containers/nav-bar';
+import AddProject from '../components/add-project';
 
 import PrivateRoute from '../../common/component/private-route';
 import Dashboard from '../components/dashboard';
@@ -25,9 +26,11 @@ class App extends React.Component {
       <div>
         <RNavBar/>
         <Switch>
-          <PrivateRoute isLogin={user.isLogin} exact path="/admin/" component={Dashboard} />
-          <Route path="/admin/login" component={Login} />
-          <Redirect to="/admin/login" />
+          <Route exact path="/admin/" component={Dashboard} />
+          <Route path="/admin/add-project/" component={AddProject} />
+          {/* <PrivateRoute isLogin={user.isLogin} exact path="/admin/" component={Dashboard} /> */}
+          {/* <Route path="/admin/login" component={Login} /> */}
+          {/* <Redirect to="/admin/login" /> */}
         </Switch>
       </div>
     )
