@@ -10,18 +10,24 @@ import PrivateRoute from '../../common/component/private-route';
 import Dashboard from '../components/dashboard';
 import Login from '../components/login';
 
-const App = ({user, setLogin}) => {
-  if (localStorage.getItem('accessToken') && !user.isLogin) {
-    setLogin();
+class App extends React.Component {
+  componentWillMount() {
+    if (localStorage.getItem('accessToken') && !this.props.user.isLogin) {
+      this.props.setLogin();
+    }
   }
-  return (
-    <Switch>
-      <PrivateRoute isLogin={user.isLogin} exact path="/admin/" component={Dashboard} />
-      <Route path="/admin/login" component={Login} />
-      <Redirect to="/admin/login" />
-    </Switch>
-  )
-};
+
+  render() {
+    const {user} = this.props;
+    return (
+      <Switch>
+        <PrivateRoute isLogin={user.isLogin} exact path="/admin/" component={Dashboard} />
+        <Route path="/admin/login" component={Login} />
+        <Redirect to="/admin/login" />
+      </Switch>
+    )
+  }
+}
 
 const mapStateToProps = state => {
   return {
