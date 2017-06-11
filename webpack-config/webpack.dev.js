@@ -17,7 +17,7 @@ module.exports = webpackMerge(commonConfig, {
   output: {
     path: helpers.root('static'),
     publicPath: 'http://localhost:3000/',
-    filename: '[name].js',
+    filename: '[name].bundle.js',
     chunkFilename: '[id].chunk.js'
   },
 
@@ -26,7 +26,14 @@ module.exports = webpackMerge(commonConfig, {
   ],
 
   devServer: {
-    historyApiFallback: true,
+    historyApiFallback: {
+      rewrites: [
+        {from: /^\/app/, to: '/index.html'},
+        {from: /^\/admin/, to: '/index-admin.html'}
+      ]
+    },
+    port: 3000,
+    inline: true,
     stats: 'minimal'
   }
 });

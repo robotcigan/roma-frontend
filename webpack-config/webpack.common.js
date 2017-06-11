@@ -14,7 +14,8 @@ const helpers = {
 module.exports = {
   entry: {
     'vendor': './src/vendor.js',
-    'app': './src/main.js'
+    'app': './src/main.js',
+    'admin': './src/admin.js'
   },
 
   resolve: {
@@ -50,12 +51,18 @@ module.exports = {
 
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      name: ['app', 'vendor']
+      name: 'vendor'
     }),
 
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      filename: 'index.html'
+      filename: 'index.html',
+      chunks: ['vendor', 'app']
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/index-admin.html',
+      filename: 'index-admin.html',
+      chunks: ['vendor', 'admin']
     })
   ]
 };
