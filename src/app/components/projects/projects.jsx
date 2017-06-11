@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import apiService from '../../utils/api.service.js';
+import apiService from '../../../common/services/api.service.js';
 
 import Project from './project.jsx';
 

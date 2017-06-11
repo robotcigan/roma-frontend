@@ -1,20 +1,31 @@
 'use strict';
 
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {Route, Redirect, Link, Switch} from 'react-router-dom';
 
+import PrivateRoute from '../../common/component/private-route';
+import Dashboard from '../components/dashboard';
+import Login from '../components/login';
 
-const App = () => {
-  return(
-      <div>
-        <h1>APP</h1>
-      </div>
+const App = ({user}) => {
+  return (
+    <Switch>
+      <PrivateRoute isLogin={user.isLogin} exact path="/admin/" component={Dashboard} />
+      <Route path="/admin/login" component={Login} />
+      <Redirect to="/admin/login" />
+    </Switch>
   )
 };
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+};
+
+const mapDispatchToProps = state => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
