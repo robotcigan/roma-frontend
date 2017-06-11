@@ -23,7 +23,8 @@ const mapStateToProps = state => {
   }
 };
 
-const mapDispatchToProps = state => {
+const mapDispatchToProps = dispatch => {
+  return {}
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

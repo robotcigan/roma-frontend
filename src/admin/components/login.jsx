@@ -4,6 +4,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {withRouter} from 'react-router-dom';
+import {Input, InputGroup, FormGroup, Button} from 'reactstrap';
 
 import * as userActions from '../actions/user';
 
@@ -25,23 +26,23 @@ class Login extends Component {
 
   onSend(e) {
     e.preventDefault();
-    console.log('on submit');
-    this.props.actions.login();
+    // console.log('on submit', this.login);
+    this.props.actions.login(this.username.value, this.password.value);
   }
 
   render() {
     return (
-      <div>
+      <div className="container">
         <form action="" onSubmit={this.onSend} >
-          <div className="form-group">
-            <label htmlFor="">Login</label>
-            <input type="text" className="form-control" ref={(input => this.login = input)} />
-          </div>
-          <div className="form-group">
-            <label htmlFor="">Password</label>
-            <input type="text" className="form-control" ref={(input => this.password = input)} />
-          </div>
-          <button type="submit" className="btn btn-default">Send</button>
+          <FormGroup>
+            <label>Username</label>
+            <Input getRef={(input => this.username = input)} placeholder="Username" />
+          </FormGroup>
+          <FormGroup>
+            <label>Password</label>
+            <Input getRef={(input => this.password = input)} placeholder="Password" />
+          </FormGroup>
+          <Button type="submit" color="success">Send</Button>
         </form>
       </div>
     )

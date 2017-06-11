@@ -3,7 +3,15 @@
 import apiService from './api.service';
 
 export default {
-  login: function(login, password) {
-    return apiService.put('/user', {postData: {login, password}});
+  login: function(username, password) {
+    return apiService.post('/user', {post: {username, password}})
+      .then(user => {
+        apiService.setToken(user.base64auth);
+        return user;
+      });
+  },
+  logout: function() {
+    apiService.setToken('');
+    localStorage.removeItem('accessToken');
   }
 }
