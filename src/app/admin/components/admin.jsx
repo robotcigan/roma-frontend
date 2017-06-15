@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Route, Redirect, Switch} from 'react-router-dom';
 
-import PrivateRoute from '../../utils/component/private-route';
+import PrivateRoute from '../../../common/component/private-route';
 
 import Login from './login';
 import Dashboard from './dashboard';

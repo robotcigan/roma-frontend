@@ -4,9 +4,18 @@ import axios from 'axios';
 import appConfig from '../../config';
 
 export default {
+  _token: '',
   instance: axios.create({
     baseURL: `${appConfig.api}/${appConfig.version}`
   }),
+  setToken: function(token) {
+    this._token = token;
+    this.instance.defaults.headers.common['Authorization'] = token;
+    localStorage.setItem('accessToken', token);
+  },
+  getToken: function() {
+    return this._token;
+  },
   call: function(method, url, params) {
     let requestParam = {
       method,
