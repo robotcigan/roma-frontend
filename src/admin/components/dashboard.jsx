@@ -12,7 +12,7 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h1>Dashboard</h1>
         <ProjectList/>
       </div>

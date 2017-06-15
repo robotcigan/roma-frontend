@@ -8,19 +8,21 @@ const RNavBar = () => {
   return (
     <div>
       <Navbar color="faded" toggleable light>
-        <NavbarBrand href="/app">
-          App
-        </NavbarBrand>
-        <Collapse navbar>
-          <Nav navbar>
-            <NavItem>
-              <Link className="nav-link" to="/admin/test" >Test</Link>
-            </NavItem>
-            <NavItem>
-              <Link className="nav-link" to="/admin/add-project">Add project</Link>
-            </NavItem>
-          </Nav>
-        </Collapse>
+        <div className="container">
+          <NavbarBrand href="/app">
+            App
+          </NavbarBrand>
+          <Collapse navbar>
+            <Nav navbar>
+              <NavItem>
+                <Link className="nav-link" to="/admin" >Проекты</Link>
+              </NavItem>
+              <NavItem>
+                <Link className="nav-link" to="/admin/add-project">Новый проект</Link>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </div>
       </Navbar>
     </div>
   );

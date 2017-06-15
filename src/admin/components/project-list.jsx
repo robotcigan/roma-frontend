@@ -9,6 +9,8 @@ import * as projectActions from '../actions/project';
 
 import ProjectItem from '../containers/project-item';
 
+import apiService from '../../common/services/api.service';
+
 class ProjectList extends Component {
   constructor(props) {
     super(props);
@@ -20,8 +22,20 @@ class ProjectList extends Component {
 
   getProjectCardView() {
     return this.props.project.body.map((item, key) => (
-      <ProjectItem key={key} project={item} />
+      <ProjectItem key={key} project={item} handleDeleteProject={this.handleDeleteProject} />
     ))
+  }
+
+  handleDeleteProject(handle) {
+    let myConfirm = () => {
+      return confirm("Ты хочешь удалить этот проект?");
+    };
+    if ( myConfirm() ) {
+      apiService.delete(`/project/${handle}`, {get: {options: 'with-images'}})
+        .then(() => {
+          console.log('project deleted');
+        });
+    }
   }
 
   render() {
