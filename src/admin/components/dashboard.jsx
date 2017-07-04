@@ -14,7 +14,7 @@ class Dashboard extends Component {
     return (
       <div className="container">
         <h1>Dashboard</h1>
-        <ProjectList/>
+        <ProjectList match={this.props.match} />
       </div>
     )
   }

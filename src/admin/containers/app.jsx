@@ -11,6 +11,7 @@ import AddProject from '../components/add-project';
 
 import PrivateRoute from '../../common/component/private-route';
 import Dashboard from '../components/dashboard';
+import ProjectPage from '../containers/project-page';
 import Login from '../components/login';
 
 class App extends React.Component {
@@ -26,11 +27,12 @@ class App extends React.Component {
       <div>
         <RNavBar/>
         <Switch>
-          <Route exact path="/admin/" component={Dashboard} />
+          {/* <Route exact path="/admin/" component={Dashboard} /> */}
           <Route path="/admin/add-project/" component={AddProject} />
-          {/* <PrivateRoute isLogin={user.isLogin} exact path="/admin/" component={Dashboard} /> */}
-          {/* <Route path="/admin/login" component={Login} /> */}
-          {/* <Redirect to="/admin/login" /> */}
+          <Route path="/admin/project/:handle" component={ProjectPage} />
+          <PrivateRoute isLogin={user.isLogin} exact path="/admin/" component={Dashboard} />
+          <Route path="/admin/login" component={Login} />
+          <Redirect to="/admin/login" />
         </Switch>
       </div>
     )

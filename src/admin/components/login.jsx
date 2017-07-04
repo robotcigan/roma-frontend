@@ -32,8 +32,8 @@ class Login extends Component {
 
   onSend(e) {
     e.preventDefault();
-    // console.log('on submit', this.login);
     this.props.actions.login(this.username.value, this.password.value);
+    console.log('on submit', this.username.value, this.password.value);
   }
 
   render() {

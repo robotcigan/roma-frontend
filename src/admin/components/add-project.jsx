@@ -42,6 +42,10 @@ class AddProject extends Component {
        .then(() => {
          console.log('project saved');
        });
+      apiService.post(`/project/${this.state.projectHandle}/images`,
+        { post: { 'img': this.state.img } }
+      );
+      console.log('img', this.state.img );
     }
   
 
@@ -120,6 +124,16 @@ class AddProject extends Component {
                 <option>Выполнен</option>
                 <option>Не выполнен</option>
               </select>
+            </div>
+          </div>
+          <div className="form-group row">
+            <div className="col-3 col-form-label">Изображения</div>
+            <div className="col-9">
+              <input
+                onChange={this.handleChange}
+                name="img"
+                type="file"
+              />
             </div>
           </div>
           <div className="offset-sm-3">

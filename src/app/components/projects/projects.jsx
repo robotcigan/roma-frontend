@@ -26,12 +26,12 @@ class Projects extends React.Component {
   componentDidMount() {
     apiService.get('/project', {get: {test: 'for', test2: 'bar'}})
     .then(projects => {
-      console.log('project');
-      console.log(projects);
+      // console.log('project');
+      // console.log(projects);
       this.setState({
         projects: projects
-      })
-    })
+      });
+    });
   }
 
   render() {
@@ -39,19 +39,7 @@ class Projects extends React.Component {
     const projectList = this.getProjects();
     return (
       <div>
-        <h1>Projects</h1>
-        <ul>
-          {projectList}
-        </ul>
-        <ul>
-          <li>
-            <Link to={`${match.url}/1`}>Первая работа</Link>
-          </li>
-          <li>
-            <Link to={`${match.url}/2`}>Вторая работа</Link>
-          </li>
-        </ul>
-
+        {projectList}
         <Route path={`${match.url}/:projectId`} component={Project} />
       </div>
     )

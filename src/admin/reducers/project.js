@@ -1,6 +1,6 @@
 'use strict';
 
-import {INIT} from '../constants/project';
+import {INIT, INIT_CURRENT} from '../constants/project';
 
 const initialState = {
   body: [],
@@ -12,6 +12,8 @@ export default (state = initialState, {type, payload}) => {
   switch (type) {
     case INIT:
       return {...state, body: payload, count: payload.length};
+    case INIT_CURRENT:
+      return {...state, current: payload};
     default:
       return state;
   }
