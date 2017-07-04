@@ -1,6 +1,6 @@
 'use strict';
 
-import {INIT} from '../constants/project';
+import {INIT, INIT_CURRENT} from '../constants/project';
 import projectService from '../utils/project.service';
 
 export const getProjectList = () => {
@@ -9,5 +9,15 @@ export const getProjectList = () => {
       .then(projects => {
         dispatch({type: INIT, payload: projects});
       });
+  }
+};
+
+export const getProject = (handle) => {
+  return dispatch => {
+    projectService.getProject(handle)
+      .then(project => {
+        dispatch({type: INIT_CURRENT, payload: project});
+      }
+      )
   }
 };
